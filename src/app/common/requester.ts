@@ -2,8 +2,8 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Query {
-  [key: string]: string | Array<string>
-};
+  [key: string]: string | Array<string>;
+}
 
 export interface RequestData {
   query?: Query;

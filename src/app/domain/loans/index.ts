@@ -1,3 +1,4 @@
 export { LoansCalculatorService } from './loans-calculator-service';
-export { LoansService, LoansServiceImpl } from './loans-service';
+export { LoansService } from './loans-service';
+export { LoansServiceImpl } from './loans-service-impl';
 export { Loan } from './loan';
