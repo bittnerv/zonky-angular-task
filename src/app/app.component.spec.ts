@@ -1,35 +1,44 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { MatToolbarModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  let fixture: ComponentFixture<AppComponent>;
+  let app: AppComponent;
+  let element: HTMLElement;
+
+  beforeEach(async(initalizeTestModule));
+  beforeEach(initializeComponent);
+
+  it('should create the app', () => {
+    expect(app).toBeTruthy();
+  });
+
+  it('should render title in a h1 tag', () => {
+    expect(findElement('h1').textContent).toContain('zonky úloha');
+  });
+
+  function findElement(selector: string): HTMLElement {
+    return element.querySelector(selector);
+  }
+
+  function initalizeTestModule() {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        MatToolbarModule
       ],
       declarations: [
         AppComponent
       ],
     }).compileComponents();
-  }));
+  }
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'zonky-uloha'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('zonky-uloha');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  function initializeComponent() {
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.debugElement.componentInstance;
+    element = fixture.debugElement.nativeElement;
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to zonky-uloha!');
-  });
+  }
 });

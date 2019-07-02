@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-title>
+    <span>Average loan by rating</span>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="row">
+      <label class="mat-h3">Rating</label>
+      <mat-button-toggle-group (change)="onRatingSelect($event.value)" [disabled]="isComputing">
+        <mat-button-toggle *ngFor="let rating of ratings" [value]="rating.value" [disableRipple]="true">
+          {{rating.percentage}} %
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <div class="row">
+      <label class="mat-h3" style="margin-right:12px;">Average loan</label>
+      <span *ngIf="averageLoan && !isComputing" style="font-weight: bold; font-size: 1.2em">
+        {{averageLoan | currency:'CZK'}}
+      </span>
+      <span *ngIf="!averageLoan && !isComputing" style="color:darkgrey">
+        Select rating
+      </span>
+      <span *ngIf="isComputing">
+        <mat-spinner style="display: inline-block; margin-right:8px; margin-bottom: -6px" diameter="24"></mat-spinner>
+        <span style="color:darkgrey">Computing...</span>
+      </span>
+    </div>
+  </mat-card-content>
+</mat-card>
