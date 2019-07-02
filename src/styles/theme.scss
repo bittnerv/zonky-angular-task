@@ -1,0 +1,30 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$app-primary: mat-palette($mat-light-blue, 800);
+$app-accent:  mat-palette($mat-light-blue, A700, A100, A400);
+$app-warn:    mat-palette($mat-red);
+
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+@mixin ui-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  body {
+    background: #eeeeee;
+  }
+
+  .mat-button-toggle {
+    background-color: #eaeaea !important;
+  }
+
+  .mat-button-toggle-checked {
+    background-color: mat-color($primary) !important;
+    color: #fefefe !important;
+  }
+}
+
+@include angular-material-theme($app-theme);
+@include ui-theme($app-theme);

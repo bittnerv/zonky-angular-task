@@ -7,7 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AverageLoanByRatingComponent } from './average-loan-by-rating/average-loan-by-rating.component';
 import { RatingsService, StaticRatingsService } from './domain/ratings';
-import { LoansService, LoansServiceImplementation, LoansCalculatorService } from './domain/loans';
+import { LoansService, LoansServiceImpl, LoansCalculatorService } from './domain/loans';
+import { Requester } from './common/requester';
+import { ZonkyApiConfig } from './common/zonky-api-config';
+
+import { environment } from '../environments/environment';
 
 const materialModules = [
   MatButtonToggleModule,
@@ -15,6 +19,13 @@ const materialModules = [
   MatProgressSpinnerModule,
   MatToolbarModule
 ];
+
+function zonkyApiConfigFactory(): ZonkyApiConfig {
+  return {
+    baseUrl: environment.zonkyApiUrl,
+    pageSize: environment.pageSize
+  };
+}
 
 @NgModule({
   declarations: [
@@ -28,8 +39,10 @@ const materialModules = [
     ...materialModules
   ],
   providers: [
+    Requester,
+    { provide: ZonkyApiConfig, useFactory: zonkyApiConfigFactory},
     { provide: RatingsService, useClass: StaticRatingsService },
-    { provide: LoansService, useClass: LoansServiceImplementation },
+    { provide: LoansService, useClass: LoansServiceImpl },
     LoansCalculatorService
   ],
   bootstrap: [AppComponent]

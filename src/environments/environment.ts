@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  zonkyApiUrl: 'https://api.zonky.cz'
+  zonkyApiUrl: 'https://api.zonky.cz',
+  pageSize: 200
 };
 
 /*

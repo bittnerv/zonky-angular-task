@@ -19,6 +19,7 @@
           "options": {
             "outputPath": "dist/zonky-uloha",
             "index": "src/index.html",
+            "baseHref": "/",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
@@ -28,7 +29,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/styles.scss",
+              "src/styles/theme.scss"
             ],
             "scripts": []
           },
@@ -88,7 +90,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/styles.scss",
+              "src/styles/theme.scss"
             ],
             "scripts": []
           }
