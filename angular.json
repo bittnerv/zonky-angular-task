@@ -64,11 +64,15 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "zonky-uloha:build"
+            "browserTarget": "zonky-uloha:build",
+            "proxyConfig": "proxy.conf.json",
+            "port": 4200
           },
           "configurations": {
             "production": {
-              "browserTarget": "zonky-uloha:build:production"
+              "browserTarget": "zonky-uloha:build:production",
+              "proxyConfig": "proxy.conf.json",
+              "port": 4200
             }
           }
         },
