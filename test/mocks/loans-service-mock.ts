@@ -1,16 +1,14 @@
 import { LoansService, Loan } from 'src/app/domain/loans';
 import { of, Observable } from 'rxjs';
 
-export const loans: Array<Loan> = [
-  { amount: 1000, rating: 'AAAA'},
-  { amount: 1990, rating: 'AAAA'},
-  { amount: 1500, rating: 'AAA'},
-];
-
 export class LoansServiceMock extends LoansService {
-  public getLoansByRating(rating: string): Observable<Array<Loan>> {
-    const matchRating = (loan) => loan.rating === rating;
+  constructor(public loans: Array<Loan>) {
+    super();
+  }
 
-    return of(loans.filter(matchRating));
+  public getLoansByRating(rating: string): Observable<Array<Loan>> {
+    const matchRating = (loan: Loan) => loan.rating === rating;
+
+    return of(this.loans.filter(matchRating));
   }
 }

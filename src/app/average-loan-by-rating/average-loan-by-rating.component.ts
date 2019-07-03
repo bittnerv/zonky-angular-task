@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RatingsService, Rating } from '../domain/ratings';
-import { Observable } from 'rxjs';
 import { LoansCalculatorService } from '../domain/loans';
 
 @Component({

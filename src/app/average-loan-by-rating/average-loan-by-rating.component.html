@@ -6,7 +6,7 @@
     <div class="row">
       <label class="mat-h3">Rating</label>
       <mat-button-toggle-group (change)="onRatingSelect($event.value)" [disabled]="isComputing">
-        <mat-button-toggle *ngFor="let rating of ratings" [value]="rating.value" [disableRipple]="true">
+        <mat-button-toggle *ngFor="let rating of ratings" [value]="rating.value" [disableRipple]="true" data-test="rating-toggle">
           {{rating.percentage}} %
         </mat-button-toggle>
       </mat-button-toggle-group>
