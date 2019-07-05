@@ -22,7 +22,7 @@
             "baseHref": "/",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "tsConfig": "src/tsconfig.app.json",
             "aot": false,
             "assets": [
               "src/favicon.ico",
@@ -85,7 +85,7 @@
           "options": {
             "main": "test/test.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
+            "tsConfig": "test/tsconfig.spec.json",
             "karmaConfig": "test/karma.conf.js",
             "assets": [
               "src/favicon.ico",
@@ -102,8 +102,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
+              "src/tsconfig.app.json",
+              "test/tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
             "exclude": [

@@ -1,5 +1,4 @@
-import { Observable, of } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { Rating } from './rating';
 
 export abstract class RatingsService {

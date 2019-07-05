@@ -115,7 +115,7 @@ describe('LoansServiceImpl', () => {
   }
 
   function simulateLoansResponses(loans: Array<Loan>) {
-    sendRequest = sendRequest.and.callFake((method, url, data) => {
+    sendRequest = sendRequest.and.callFake((_method, _url, data) => {
       const pageIndex = Number.parseInt(data.headers['X-Page'], 10);
       const pageStart = pageSize * pageIndex;
 

@@ -1,4 +1,4 @@
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { mergeMap, reduce, tap } from 'rxjs/operators';
 
 export type LoadBatchFn<T> = (batchIndex: number) => Observable<Array<T>>;
@@ -14,13 +14,13 @@ export function batchload<T>(loadBatch: LoadBatchFn<T>, batchSize: number): Obse
       reduce(combine, [])
     );
 
-  function combine(result, batch) {
+  function combine(result: Array<T>, batch: Array<T>) {
     result.push(...batch);
 
     return result;
   }
 
-  function processBatch(batch) {
+  function processBatch(batch: Array<T>) {
     if (batch.length < batchSize) {
       batchObservable.complete();
     } else {

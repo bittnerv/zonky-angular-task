@@ -15,7 +15,7 @@ export class Requester {
   constructor(private httpClient: HttpClient) {
   }
 
-  public sendRequest<T>(method, url, data: RequestData = {}): Observable<T> {
+  public sendRequest<T>(method: string, url: string, data: RequestData = {}): Observable<T> {
     return this.httpClient.request<T>(method, url, {
       params: new HttpParams({fromObject: data.query || {}}),
       body: data.body,
