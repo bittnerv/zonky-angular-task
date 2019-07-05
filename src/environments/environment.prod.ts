@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  zonkyApiUrl: 'http://localhost:4200/zonky-api',
+  zonkyApiUrl: '/zonky-api',
   pageSize: 1000
 };

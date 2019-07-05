@@ -20,7 +20,7 @@ const materialModules = [
   MatToolbarModule
 ];
 
-function zonkyApiConfigFactory(): ZonkyApiConfig {
+export function zonkyApiConfigFactory(): ZonkyApiConfig {
   return {
     baseUrl: environment.zonkyApiUrl,
     pageSize: environment.pageSize

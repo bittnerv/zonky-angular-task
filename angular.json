@@ -71,8 +71,6 @@
           "configurations": {
             "production": {
               "browserTarget": "zonky-uloha:build:production",
-              "proxyConfig": "proxy.conf.json",
-              "port": 4200
             }
           }
         },

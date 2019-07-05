@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  zonkyApiUrl: 'http://localhost:4200/zonky-api',
+  zonkyApiUrl: '/zonky-api',
   pageSize: 1000
 };
 
