@@ -11,6 +11,8 @@ describe('LoansCalculatorService', () => {
   let loansCalulatorService: LoansCalculatorService;
   let loansService: LoansServiceMock;
 
+  beforeEach(initializeService);
+
   describe('when asked for average loan by rating', () => {
     it('should calculate loans', async () => {
       expect(await getAverageLoanByRating()).toEqual(1500);
@@ -31,9 +33,6 @@ describe('LoansCalculatorService', () => {
       return loansCalulatorService.getAverageLoanByRating('AAAA').toPromise();
     }
   });
-
-
-  beforeEach(initializeService);
 
   function initializeService() {
     loansService = new LoansServiceMock(mockLoans);

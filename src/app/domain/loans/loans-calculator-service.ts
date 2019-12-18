@@ -1,8 +1,10 @@
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoansService } from './loans-service';
 import { map } from 'rxjs/operators';
+import { LoansService } from './loans-service';
 import { Loan } from './loan';
 
+@Injectable()
 export class LoansCalculatorService {
   constructor(private loansService: LoansService) {
   }

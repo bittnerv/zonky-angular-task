@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { Rating } from './rating';
@@ -50,6 +51,7 @@ const ratings: Array<Rating> = [
   }
 ];
 
+@Injectable()
 export class StaticRatingsService implements RatingsService {
   private ratings = of(ratings).pipe(shareReplay(1));
 

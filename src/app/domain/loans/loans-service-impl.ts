@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Loan } from './loan';
 import { Query, Requester } from 'src/app/common/requester';
@@ -12,6 +13,7 @@ const zonkyApi = {
   }
 };
 
+@Injectable()
 export class LoansServiceImpl implements LoansService {
   constructor(private requester: Requester, private zonkyApiConfig: ZonkyApiConfig) {
   }

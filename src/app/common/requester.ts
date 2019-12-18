@@ -1,4 +1,5 @@
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Query {
@@ -11,6 +12,7 @@ export interface RequestData {
   headers?: {[key: string]: string};
 }
 
+@Injectable()
 export class Requester {
   constructor(private httpClient: HttpClient) {
   }
