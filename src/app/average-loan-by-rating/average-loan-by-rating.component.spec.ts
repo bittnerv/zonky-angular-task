@@ -1,6 +1,8 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AverageLoanByRatingComponent } from './average-loan-by-rating.component';
-import { MatButtonToggleModule, MatCardModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RatingsService, Rating } from '../domain/ratings';
 import { RatingsServiceMock } from 'test/mocks/ratings-service-mock';
 import { LoansCalculatorService } from '../domain/loans';
@@ -75,11 +77,11 @@ describe('AverageLoanByRatingComponent', () => {
       });
     });
 
-    function computeAverageLoan() {
+    function computeAverageLoan(): void {
       averageLoanObservable.next(averageLoan);
     }
 
-    function selectRating(ratingIndex: number) {
+    function selectRating(ratingIndex: number): void {
       const ratingsToggles = findElements('rating-toggle');
 
       ratingsToggles[ratingIndex].querySelector('button').click();
@@ -90,7 +92,7 @@ describe('AverageLoanByRatingComponent', () => {
     return Array.from(element.querySelectorAll(`[data-test=${selector}]`));
   }
 
-  function initalizeTestModule() {
+  function initalizeTestModule(): void {
     averageLoanObservable = new Subject();
     getAverageLoanByRating = jasmine.createSpy('getAverageLoanByRating').and.returnValue(averageLoanObservable);
 
@@ -110,7 +112,7 @@ describe('AverageLoanByRatingComponent', () => {
     }).compileComponents();
   }
 
-  function initializeComponent() {
+  function initializeComponent(): void {
     fixture = TestBed.createComponent(AverageLoanByRatingComponent);
     component = fixture.debugElement.componentInstance;
     element = fixture.debugElement.nativeElement;

@@ -42,7 +42,7 @@ export class LoansServiceImpl implements LoansService {
     );
   }
 
-  private buildPaginationHeaders(page: number) {
+  private buildPaginationHeaders(page: number): {[key: string]: string} {
     return {
       'X-Page': page.toString(),
       'X-Size': this.zonkyApiConfig.pageSize.toString()

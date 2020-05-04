@@ -27,7 +27,7 @@ describe('StaticRatingsService', () => {
     }
   });
 
-  function initializeService() {
+  function initializeService(): void {
     ratingsService = new StaticRatingsService();
   }
 })

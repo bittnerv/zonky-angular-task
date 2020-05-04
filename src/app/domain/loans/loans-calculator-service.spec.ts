@@ -25,16 +25,16 @@ describe('LoansCalculatorService', () => {
       });
     });
 
-    function simulateNoLoans() {
+    function simulateNoLoans(): void {
       loansService.loans = [];
     }
 
-    async function getAverageLoanByRating() {
+    async function getAverageLoanByRating(): Promise<number> {
       return loansCalulatorService.getAverageLoanByRating('AAAA').toPromise();
     }
   });
 
-  function initializeService() {
+  function initializeService(): void {
     loansService = new LoansServiceMock(mockLoans);
     loansCalulatorService = new LoansCalculatorService(loansService);
   }

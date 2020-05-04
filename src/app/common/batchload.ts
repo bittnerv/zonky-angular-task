@@ -14,13 +14,13 @@ export function batchload<T>(loadBatch: LoadBatchFn<T>, batchSize: number): Obse
       reduce(combine, [])
     );
 
-  function combine(result: Array<T>, batch: Array<T>) {
+  function combine(result: Array<T>, batch: Array<T>): Array<T> {
     result.push(...batch);
 
     return result;
   }
 
-  function processBatch(batch: Array<T>) {
+  function processBatch(batch: Array<T>): void {
     if (batch.length < batchSize) {
       batchObservable.complete();
     } else {

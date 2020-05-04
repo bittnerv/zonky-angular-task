@@ -76,7 +76,7 @@ describe('LoansServiceImpl', () => {
       });
     });
 
-    function simulateLoans(count: number) {
+    function simulateLoans(count: number): void {
       loans = mockLoans.slice(0, count);
       simulateLoansResponses(loans);
     }
@@ -86,7 +86,7 @@ describe('LoansServiceImpl', () => {
     }
   });
 
-  function expectToRequestLoansByRating(rating: string, page: number) {
+  function expectToRequestLoansByRating(rating: string, page: number): void {
     const headers = {
       'X-Page': page.toString(),
       'X-Size': pageSize.toString()
@@ -103,27 +103,27 @@ describe('LoansServiceImpl', () => {
     );
   }
 
-  function expectToRequestLoansByRatingOnce(rating: string) {
+  function expectToRequestLoansByRatingOnce(rating: string): void {
     expect(sendRequest).toHaveBeenCalledTimes(1);
     expectToRequestLoansByRating(rating, 0);
   }
 
-  function expectToRequestLoansByRatingTwice(rating: string) {
+  function expectToRequestLoansByRatingTwice(rating: string): void {
     expect(sendRequest).toHaveBeenCalledTimes(2);
     expectToRequestLoansByRating(rating, 0);
     expectToRequestLoansByRating(rating, 1);
   }
 
-  function simulateLoansResponses(loans: Array<Loan>) {
+  function simulateLoansResponses(loans: Array<Loan>): void {
     sendRequest = sendRequest.and.callFake((_method, _url, data) => {
-      const pageIndex = Number.parseInt(data.headers['X-Page'], 10);
+      const pageIndex = parseInt(data.headers['X-Page'], 10);
       const pageStart = pageSize * pageIndex;
 
       return of(loans.slice(pageStart, pageStart + pageSize));
     });
   }
 
-  function initializeService() {
+  function initializeService(): void {
     const requester = { sendRequest: jasmine.createSpy('sendRequest') } as any;
 
     sendRequest = requester.sendRequest;

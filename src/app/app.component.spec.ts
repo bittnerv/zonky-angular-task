@@ -1,5 +1,5 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { MatToolbarModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
@@ -23,7 +23,7 @@ describe('AppComponent', () => {
     return element.querySelector(selector);
   }
 
-  function initalizeTestModule() {
+  function initalizeTestModule(): void {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
@@ -35,7 +35,7 @@ describe('AppComponent', () => {
     }).compileComponents();
   }
 
-  function initializeComponent() {
+  function initializeComponent(): void {
     fixture = TestBed.createComponent(AppComponent);
     app = fixture.debugElement.componentInstance;
     element = fixture.debugElement.nativeElement;

@@ -18,14 +18,14 @@ export class AverageLoanByRatingComponent implements OnInit {
   ) {
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.ratingsService.getAvailableRatings()
       .subscribe((ratings) => {
         this.ratings = ratings;
       });
   }
 
-  public onRatingSelect(rating: string) {
+  public onRatingSelect(rating: string): void {
     this.isComputing = true;
     this.loansCalculatorService.getAverageLoanByRating(rating)
       .subscribe((averageLoan) => {
