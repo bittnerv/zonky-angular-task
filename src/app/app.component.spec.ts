@@ -1,4 +1,4 @@
-import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
@@ -8,7 +8,7 @@ describe('AppComponent', () => {
   let app: AppComponent;
   let element: HTMLElement;
 
-  beforeEach(async(initalizeTestModule));
+  beforeEach(waitForAsync(initalizeTestModule));
   beforeEach(initializeComponent);
 
   it('should create the app', () => {

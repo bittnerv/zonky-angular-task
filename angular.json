@@ -45,7 +45,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -73,7 +72,7 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "zonky-uloha:build:production",
+              "browserTarget": "zonky-uloha:build:production"
             }
           }
         },
@@ -102,15 +101,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "test/tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
             ]
           }
         },
@@ -127,6 +122,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "zonky-uloha"
 }

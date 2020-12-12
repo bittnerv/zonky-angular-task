@@ -1,7 +1,8 @@
-import { LoansService } from './loans-service';
-import { LoansServiceImpl } from './loans-service-impl';
-import { Loan } from './loan';
 import { of } from 'rxjs';
+
+import { LoansService } from './loans-service';
+import { LoansServiceImpl, zonkyHeaders, equal } from './loans-service-impl';
+import { Loan } from './loan';
 
 export const mockLoans: Array<Loan> = [
   { amount: 1000, rating: 'AAAA' },
@@ -88,11 +89,11 @@ describe('LoansServiceImpl', () => {
 
   function expectToRequestLoansByRating(rating: string, page: number): void {
     const headers = {
-      'X-Page': page.toString(),
-      'X-Size': pageSize.toString()
+      [zonkyHeaders.page]: page.toString(),
+      [zonkyHeaders.size]: pageSize.toString()
     };
     const query = {
-      rating__eq: rating,
+      [equal('rating')]: rating,
       fields: 'amount,rating'
     };
 

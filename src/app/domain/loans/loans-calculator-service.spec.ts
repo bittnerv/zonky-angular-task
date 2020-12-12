@@ -1,6 +1,7 @@
+import { LoansServiceMock } from 'test/mocks/loans-service-mock';
+
 import { Loan } from './loan';
 import { LoansCalculatorService } from './loans-calculator-service';
-import { LoansServiceMock } from 'test/mocks/loans-service-mock';
 
 export const mockLoans: Array<Loan> = [
   { amount: 1000, rating: 'AAAA' },

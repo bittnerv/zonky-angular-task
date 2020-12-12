@@ -1,12 +1,15 @@
-import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { AverageLoanByRatingComponent } from './average-loan-by-rating.component';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { RatingsService, Rating } from '../domain/ratings';
+import { Subject } from 'rxjs';
+
 import { RatingsServiceMock } from 'test/mocks/ratings-service-mock';
+
+import { RatingsService, Rating } from '../domain/ratings';
 import { LoansCalculatorService } from '../domain/loans';
-import { Subject } from 'rxjs/internal/Subject';
+
+import { AverageLoanByRatingComponent } from './average-loan-by-rating.component';
 
 const ratings: Array<Rating> = [
   {
@@ -35,7 +38,7 @@ describe('AverageLoanByRatingComponent', () => {
   let getAverageLoanByRating: jasmine.Spy;
   let averageLoanObservable: Subject<number>;
 
-  beforeEach(async(initalizeTestModule));
+  beforeEach(waitForAsync(initalizeTestModule));
   beforeEach(initializeComponent);
 
   it('should create component', () => {

@@ -1,13 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
+import { Headers, Query, Requester } from '../../common/requester';
+import { batchload } from '../../common/batchload';
+import { ZonkyApiConfig } from '../../common/zonky-api-config';
+
 import { Loan } from './loan';
-import { Query, Requester } from 'src/app/common/requester';
-import { batchload } from 'src/app/common/batchload';
-import { ZonkyApiConfig } from 'src/app/common/zonky-api-config';
 import { LoansService } from './loans-service';
 
+export const zonkyHeaders = {
+  page: 'X-Page',
+  size: 'X-Size',
+};
+
+export const equal = (key: string): string => `${key}__eq`;
+
 const zonkyApi = {
-  GetLoans: {
+  getLoans: {
     method: 'GET',
     path: '/loans/marketplace'
   }
@@ -20,7 +29,7 @@ export class LoansServiceImpl implements LoansService {
 
   public getLoansByRating(rating: string): Observable<Array<Loan>> {
     const query: Query = {
-      rating__eq: rating,
+      [equal('rating')]: rating,
       fields: 'amount,rating'
     };
 
@@ -28,11 +37,14 @@ export class LoansServiceImpl implements LoansService {
   }
 
   private fetchLoans(query: Query): Observable<Array<Loan>> {
-    return batchload((page) => this.fetchLoansBatch(query, page), this.zonkyApiConfig.pageSize);
+    return batchload(
+      page => this.fetchLoansBatch(query, page),
+      this.zonkyApiConfig.pageSize,
+    );
   }
 
   private fetchLoansBatch(query: Query, page: number): Observable<Array<Loan>> {
-    const route = zonkyApi.GetLoans;
+    const route = zonkyApi.getLoans;
     const headers = this.buildPaginationHeaders(page);
 
     return this.requester.sendRequest<Array<Loan>>(
@@ -42,10 +54,10 @@ export class LoansServiceImpl implements LoansService {
     );
   }
 
-  private buildPaginationHeaders(page: number): {[key: string]: string} {
+  private buildPaginationHeaders(page: number): Headers {
     return {
-      'X-Page': page.toString(),
-      'X-Size': this.zonkyApiConfig.pageSize.toString()
+      [zonkyHeaders.page]: page.toString(),
+      [zonkyHeaders.size]: this.zonkyApiConfig.pageSize.toString()
     };
   }
 }

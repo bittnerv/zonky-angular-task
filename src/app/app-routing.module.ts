@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { AverageLoanByRatingComponent } from './average-loan-by-rating/average-loan-by-rating.component';
 
-const RouteNames = {
+const routeNames = {
   averageLoan: 'average-loan'
 };
 
 const routes: Routes = [
   {
-    path: RouteNames.averageLoan,
+    path: routeNames.averageLoan,
     component: AverageLoanByRatingComponent
   },
-  { path: '**', redirectTo: RouteNames.averageLoan }
+  { path: '**', redirectTo: routeNames.averageLoan }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

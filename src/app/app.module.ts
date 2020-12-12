@@ -6,6 +6,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { environment } from '../environments/environment';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AverageLoanByRatingComponent } from './average-loan-by-rating/average-loan-by-rating.component';
@@ -14,8 +16,6 @@ import { LoansService, LoansServiceImpl, LoansCalculatorService } from './domain
 import { Requester } from './common/requester';
 import { ZonkyApiConfig } from './common/zonky-api-config';
 
-import { environment } from '../environments/environment';
-
 const materialModules = [
   MatButtonToggleModule,
   MatCardModule,
@@ -23,7 +23,7 @@ const materialModules = [
   MatToolbarModule
 ];
 
-export function zonkyApiConfigFactory(): ZonkyApiConfig {
+function zonkyApiConfigFactory(): ZonkyApiConfig {
   return {
     baseUrl: environment.zonkyApiUrl,
     pageSize: environment.pageSize

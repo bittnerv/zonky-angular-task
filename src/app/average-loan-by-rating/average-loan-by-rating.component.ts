@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { RatingsService, Rating } from '../domain/ratings';
 import { LoansCalculatorService } from '../domain/loans';
 
@@ -20,7 +21,7 @@ export class AverageLoanByRatingComponent implements OnInit {
 
   public ngOnInit(): void {
     this.ratingsService.getAvailableRatings()
-      .subscribe((ratings) => {
+      .subscribe(ratings => {
         this.ratings = ratings;
       });
   }
@@ -28,7 +29,7 @@ export class AverageLoanByRatingComponent implements OnInit {
   public onRatingSelect(rating: string): void {
     this.isComputing = true;
     this.loansCalculatorService.getAverageLoanByRating(rating)
-      .subscribe((averageLoan) => {
+      .subscribe(averageLoan => {
         this.isComputing = false;
         this.averageLoan = averageLoan;
       });

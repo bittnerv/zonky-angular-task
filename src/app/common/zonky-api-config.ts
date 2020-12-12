@@ -1,4 +1,4 @@
 export abstract class ZonkyApiConfig {
-  baseUrl: string;
-  pageSize: number;
+  public baseUrl: string;
+  public pageSize: number;
 }
